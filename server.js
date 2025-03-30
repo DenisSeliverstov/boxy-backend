@@ -2,8 +2,15 @@ const express = require("express");
 const cors = require("cors");
 
 const app = express();
+
+// Настройка CORS
+app.use(cors({
+  origin: "*",  // Разрешаем все источники
+  methods: "GET, POST, OPTIONS",
+  allowedHeaders: "Content-Type, Authorization"
+}));
+
 app.use(express.json());
-app.use(cors()); // Разрешаем запросы с фронтенда
 
 // API для фронтенда
 app.get("/api/data", (req, res) => {
